@@ -6,7 +6,7 @@ export const config = () => ({
 	PORT: process.env.PORT || 3000,
 	NODE_ENV: process.env.NODE_ENV || "local",
 	DATABASE_URL: process.env.DATABASE_URL,
-	JWT_SECRET: process.env.JWT_SECRET || "test",
+	// JWT_SECRET: process.env.JWT_SECRET || "test",
 	SALT_ROUNDS: process.env.SALT_ROUNDS || "10",
 	BREVO_EMAIL_FROM: process.env.BREVO_EMAIL_FROM || "",
 	BREVO_SMTP_HOST: process.env.BREVO_SMTP_HOST || "",

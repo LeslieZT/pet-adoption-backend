@@ -13,16 +13,6 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-enum DonationType {
-  ONE_TIME
-  SUBSCRIPTION
-}
-
-enum ChannelType {
-  ADOPTION
-  SHELTER
-}
-
 model Department {
   departmentId Int        @id @default(autoincrement()) @map("department_id")
   name         String
@@ -66,14 +56,15 @@ model District {
 
 model User {
   userId       String        @id @default(dbgenerated("gen_random_uuid()")) @map("user_id") @db.Uuid
-  channel      ChannelType
+  channel      String
   firstName    String        @map("first_name")
   lastName     String        @map("last_name")
   email        String
   password     String
+  avatar    String?
   phone        String?
-  birthdate    DateTime
-  address      String
+  birthdate    DateTime?
+  address      String?
   districtId   Int?          @map("district_id")
   district     District?     @relation(fields: [districtId], references: [districtId])
   donations    Donation[]
@@ -106,7 +97,7 @@ model Donation {
   userId     String       @map("user_id") @db.Uuid
   user       User         @relation(fields: [userId], references: [userId])
   amount     Decimal
-  type       DonationType
+  type       String
   price      Decimal
   createdAt  DateTime     @default(now()) @map("created_at")
   updatedAt  DateTime?    @updatedAt @map("updated_at")
