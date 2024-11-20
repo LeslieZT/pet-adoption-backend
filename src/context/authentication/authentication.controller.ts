@@ -11,7 +11,6 @@ import RequestValidator from "../../utils/request-validator";
 import { ChannelType } from "./domain/enum/ChannelType.enum";
 import { AUTHENTICATION_TYPES } from "./infrastructure/ioc/authentication.types";
 import AuthenticationService from "./application/services/authentication.service";
-import { PayloadRequest } from "../../shared/classes/Payload";
 
 @injectable()
 export default class AuthenticationController {
@@ -56,11 +55,10 @@ export default class AuthenticationController {
 		res.status(response.status).json(response);
 	}
 
-	async signInWithOAuthCallback(req: Request, res: Response): Promise<void> {
-		const payload = req["payload"] as PayloadRequest;
+	async signInWithOAuthCallback(req: Request, res: Response): Promise<void> {	
+		const channel = req.headers["x-channel"] as ChannelType;
 		const signInCallbackDto = plainToClass(SignInWithOAuthCallbackRequest, {
-			...req.params,
-			accessToken: payload.token,
+			...req.body,
 		});
 		const error = await RequestValidator.validate(signInCallbackDto);
 		if (error) {
@@ -68,7 +66,7 @@ export default class AuthenticationController {
 			return;
 		}
 		const response = await this.authenticationService.signInWithOAuthCallback(
-			payload,
+			channel,
 			signInCallbackDto
 		);
 		res.status(response.status).json(response);

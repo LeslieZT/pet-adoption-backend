@@ -18,6 +18,7 @@ export interface SignInResponse {
 	token_type: string;
 	expires_in: number;
 	refresh_token: string;
+	expires_at: number;
 	user: unknown;
 }
 

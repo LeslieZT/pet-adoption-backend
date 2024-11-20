@@ -50,6 +50,7 @@ export default class AuthenticationService {
 			accessToken: session.access_token,
 			refreshToken: session.refresh_token,
 			expiresIn: session.expires_in,
+			expiresAt: session.expires_at,
 		};
 		const response = new ApiResponse({ status: HTTP_OK, data: result });
 		return response;
@@ -98,12 +99,12 @@ export default class AuthenticationService {
 	}
 
 	async signInWithOAuthCallback(
-		payload: PayloadRequest,
+		channel: ChannelType,
 		params: SignInWithOAuthCallbackRequest
 	): Promise<ApiResponse> {
 		const data = await this.authenticationProvider.getUser(params.accessToken);
 		if (params.provider === data.app_metadata.provider) {
-			const user = await this.userRepository.findUserByEmail(data.email, payload.channel);
+			const user = await this.userRepository.findUserByEmail(data.email, channel);
 			if (!user) {
 				await this.userRepository.create({
 					userId: data.id,
@@ -112,7 +113,7 @@ export default class AuthenticationService {
 					avatar: data.user_metadata.avatar_url,
 					email: data.email,
 					password: "",
-					channel: payload.channel,
+					channel: channel,
 				});
 				return new ApiResponse({
 					status: HTTP_CREATED,

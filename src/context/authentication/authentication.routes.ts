@@ -20,8 +20,7 @@ authenticationRoutes.post(
 	"/sign-in/providers",
 	asyncHandler(controller.signInWithOAuth.bind(controller))
 );
-authenticationRoutes.get(
-	"/sign-in/providers/:provider/callback",
-	middleware.authorize.bind(middleware),
+authenticationRoutes.post(
+	"/sign-in/providers/callback",
 	asyncHandler(controller.signInWithOAuthCallback.bind(controller))
 );

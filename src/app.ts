@@ -18,12 +18,14 @@ app.use(
 				callback(new Error("Not allowed by CORS"));
 			}
 		},
+		credentials: true,
+		methods: ["GET", "POST", "PUT", "DELETE"],
 	})
 );
 // app.use(httpLoggerMiddleware);
 app.use(express.json());
 app.use(cookieParser());
-app.use(mainRouter);
+app.use('/api/v1', mainRouter);
 app.use(errorHandler);
 
 export default app;
