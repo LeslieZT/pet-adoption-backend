@@ -7,5 +7,5 @@ export class SignInWithOAuthCallbackRequest {
 	provider: OAuthProvider;
 
 	@IsDefined()
-	accessToken: string; 
+	accessToken: string;
 }

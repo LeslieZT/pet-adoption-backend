@@ -14,12 +14,11 @@ import {
 } from "../dtos";
 import { AUTHENTICATION_TYPES } from "../../infrastructure/ioc/authentication.types";
 import { ChannelType } from "./../../domain/enum/ChannelType.enum";
-import { UserRepository } from "../../domain/repository/user.repository";
+import { UserRepository } from "../../domain/repositories/user.repository";
 import { AuthenticationProvider } from "../adapter/authentication-provider.adapter";
 import { BcryptManager } from "../adapter/bcrypt-manager.adapter";
 import { CustomError } from "../../../../shared/error/CustomError";
 import { ErrorType } from "../../../../shared/error/error.type";
-import { PayloadRequest } from "../../../../shared/classes/Payload";
 
 @injectable()
 export default class AuthenticationService {
@@ -70,7 +69,9 @@ export default class AuthenticationService {
 			password: params.password,
 			metadata: { channel },
 		});
+
 		const password = await this.bcryptManager.hash(params.password);
+
 		await this.userRepository.create({
 			userId: authData.id,
 			...params,

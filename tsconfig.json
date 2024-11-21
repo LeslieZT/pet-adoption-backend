@@ -4,6 +4,7 @@
     "module": "commonjs",
     "moduleResolution": "node",
     "forceConsistentCasingInFileNames": true,
+    "allowJs": true,
     "strict": false, 
     "skipLibCheck": true,
     "experimentalDecorators": true,

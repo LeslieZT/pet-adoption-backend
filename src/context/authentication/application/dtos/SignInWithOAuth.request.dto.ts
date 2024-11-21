@@ -5,5 +5,4 @@ export class SignInWithOAuthRequest {
 	@IsEnum(OAuthProvider)
 	@IsDefined()
 	provider: OAuthProvider;
-
 }

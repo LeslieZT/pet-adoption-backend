@@ -16,10 +16,8 @@ export class SignUpRequestDto {
 	@IsDefined()
 	email: string;
 
-	
 	@MinLength(8)
 	@IsDefined()
 	@IsString()
 	password: string;
-
 }

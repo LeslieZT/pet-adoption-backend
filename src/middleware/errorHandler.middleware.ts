@@ -5,7 +5,7 @@ import { ErrorType } from "../shared/error/error.type";
 import { logger } from "../utils/logger";
 
 export const errorHandler = (err: Error, _req: Request, res: Response, _next: NextFunction) => {
-	logger.error(err, 'Error handler');
+	logger.error(err, "Error handler");
 	if (err instanceof CustomError) {
 		res
 			.status(err.status || HTTP_INTERNAL_SERVER_ERROR)

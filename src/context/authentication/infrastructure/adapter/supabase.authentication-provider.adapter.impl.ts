@@ -75,7 +75,7 @@ export class SupabaseAuthenticationProviderImpl implements AuthenticationProvide
 	}
 
 	async getUser(token: string): Promise<GetUserResponse> {
-		const { data, error } = await this.client.auth.getUser(token)
+		const { data, error } = await this.client.auth.getUser(token);
 		if (error) {
 			logger.error(error, "Get User Error Supabase Provider");
 			throw new CustomError({ errorType: ErrorType.AUTHENTICATION_ERROR, message: error.message });
@@ -84,5 +84,3 @@ export class SupabaseAuthenticationProviderImpl implements AuthenticationProvide
 		return data.user;
 	}
 }
-
-

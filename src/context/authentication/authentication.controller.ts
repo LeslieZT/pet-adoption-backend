@@ -55,7 +55,7 @@ export default class AuthenticationController {
 		res.status(response.status).json(response);
 	}
 
-	async signInWithOAuthCallback(req: Request, res: Response): Promise<void> {	
+	async signInWithOAuthCallback(req: Request, res: Response): Promise<void> {
 		const channel = req.headers["x-channel"] as ChannelType;
 		const signInCallbackDto = plainToClass(SignInWithOAuthCallbackRequest, {
 			...req.body,

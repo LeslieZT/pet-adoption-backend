@@ -1,10 +1,10 @@
+import { UserEntity } from "../../domain/entity/User.entity";
 import { prisma } from "../../../../database/database";
-import { User, CreateUser } from "../../domain/entity/User.entity";
 import { ChannelType } from "../../domain/enum/ChannelType.enum";
-import { UserRepository } from "../../domain/repository/user.repository";
+import { UserRepository } from "../../domain/repositories/user.repository";
 
 export class UserRepositoryImpl implements UserRepository {
-	async findUserByEmail(email: string, channel: ChannelType): Promise<User> {
+	async findUserByEmail(email: string, channel: ChannelType): Promise<UserEntity> {
 		const user = await prisma.user.findFirst({
 			where: {
 				email: email,
@@ -13,10 +13,9 @@ export class UserRepositoryImpl implements UserRepository {
 		});
 		return user;
 	}
-	async create(user: CreateUser): Promise<void> {
+	async create(user: UserEntity): Promise<void> {
 		await prisma.user.create({
 			data: user,
 		});
-	
 	}
 }

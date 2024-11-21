@@ -25,7 +25,7 @@ app.use(
 // app.use(httpLoggerMiddleware);
 app.use(express.json());
 app.use(cookieParser());
-app.use('/api/v1', mainRouter);
+app.use("/api/v1", mainRouter);
 app.use(errorHandler);
 
 export default app;
