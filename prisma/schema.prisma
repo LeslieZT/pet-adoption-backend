@@ -71,6 +71,7 @@ model User {
   shelters     Shelter[]
   adoptions    Adoption[]
   favoritePets FavoritePet[]
+  customerId   String?       @map("customer_id")
   createdAt    DateTime      @default(now()) @map("created_at")
   updatedAt    DateTime?     @updatedAt @map("updated_at")
 
@@ -78,14 +79,18 @@ model User {
 }
 
 model Plan {
-  planId      Int        @id @default(autoincrement()) @map("plan_id")
-  name        String
-  title       String
-  description String
-  price       Decimal
-  donations   Donation[]
-  createdAt   DateTime   @default(now()) @map("created_at")
-  updatedAt   DateTime?  @updatedAt @map("updated_at")
+  planId          Int        @id @default(autoincrement()) @map("plan_id")
+  productId       String     @map("product_id")
+  codeOneTime     String     @map("code_one_time")
+  codeSubscription String     @map("code_subscription")
+  name            String
+  title           String
+  description     String
+  price           Decimal
+  isPolular       Boolean    @map("is_polular")
+  donations       Donation[]
+  createdAt       DateTime   @default(now()) @map("created_at")
+  updatedAt       DateTime?  @updatedAt @map("updated_at")
 
   @@map("plans")
 }
@@ -98,7 +103,7 @@ model Donation {
   user       User      @relation(fields: [userId], references: [userId])
   amount     Decimal
   type       String
-  price      Decimal
+  status     String
   createdAt  DateTime  @default(now()) @map("created_at")
   updatedAt  DateTime? @updatedAt @map("updated_at")
 
@@ -155,7 +160,7 @@ model Pet {
   gender         String
   color          String
   behavior       String[]
-  profilePicture Json?      @map("profile_picture")
+  profilePicture Json?         @map("profile_picture")
   categoryId     Int           @map("category_id")
   category       PetCategory   @relation(fields: [categoryId], references: [petCategoryId])
   breedId        Int           @map("breed_id")

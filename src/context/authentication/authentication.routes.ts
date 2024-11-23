@@ -12,15 +12,15 @@ const middleware = authenticationContainer.get<AuthenticationMiddleware>(
 	AUTHENTICATION_TYPES.AuthenticationMiddleware
 );
 
-export const authenticationRoutes = Router();
+export const authenticationRouter = Router();
 
-authenticationRoutes.post("/sign-up", asyncHandler(controller.signUp.bind(controller)));
-authenticationRoutes.post("/sign-in", asyncHandler(controller.signIn.bind(controller)));
-authenticationRoutes.post(
+authenticationRouter.post("/sign-up", asyncHandler(controller.signUp.bind(controller)));
+authenticationRouter.post("/sign-in", asyncHandler(controller.signIn.bind(controller)));
+authenticationRouter.post(
 	"/sign-in/providers",
 	asyncHandler(controller.signInWithOAuth.bind(controller))
 );
-authenticationRoutes.post(
+authenticationRouter.post(
 	"/sign-in/providers/callback",
 	asyncHandler(controller.signInWithOAuthCallback.bind(controller))
 );

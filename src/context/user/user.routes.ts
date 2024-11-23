@@ -13,14 +13,14 @@ const middleware = authenticationContainer.get<AuthenticationMiddleware>(
 
 const controller = userContainer.get<UserController>(USER_TYPES.UserController);
 
-export const userRoutes = Router();
+export const userRouter = Router();
 
-userRoutes.get(
+userRouter.get(
 	"/profile",
 	middleware.authorize.bind(middleware),
 	asyncHandler(controller.findOne.bind(controller))
 );
-userRoutes.put(
+userRouter.put(
 	"/profile",
 	middleware.authorize.bind(middleware),
 	asyncHandler(controller.update.bind(controller))

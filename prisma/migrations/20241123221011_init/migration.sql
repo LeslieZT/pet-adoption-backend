@@ -1,9 +1,3 @@
--- CreateEnum
-CREATE TYPE "DonationType" AS ENUM ('ONE_TIME', 'SUBSCRIPTION');
-
--- CreateEnum
-CREATE TYPE "ChannelType" AS ENUM ('ADOPTION', 'SHELTER');
-
 -- CreateTable
 CREATE TABLE "departments" (
     "department_id" SERIAL NOT NULL,
@@ -43,15 +37,17 @@ CREATE TABLE "districts" (
 -- CreateTable
 CREATE TABLE "users" (
     "user_id" UUID NOT NULL DEFAULT gen_random_uuid(),
-    "channel" "ChannelType" NOT NULL,
+    "channel" TEXT NOT NULL,
     "first_name" TEXT NOT NULL,
     "last_name" TEXT NOT NULL,
     "email" TEXT NOT NULL,
     "password" TEXT NOT NULL,
+    "avatar" JSONB,
     "phone" TEXT,
-    "birthdate" TIMESTAMP(3) NOT NULL,
-    "address" TEXT NOT NULL,
+    "birthdate" DATE,
+    "address" TEXT,
     "district_id" INTEGER,
+    "customer_id" TEXT,
     "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updated_at" TIMESTAMP(3),
 
@@ -61,10 +57,14 @@ CREATE TABLE "users" (
 -- CreateTable
 CREATE TABLE "plans" (
     "plan_id" SERIAL NOT NULL,
+    "product_id" TEXT NOT NULL,
+    "code_one_time" TEXT NOT NULL,
+    "code_subscription" TEXT NOT NULL,
     "name" TEXT NOT NULL,
     "title" TEXT NOT NULL,
     "description" TEXT NOT NULL,
     "price" DECIMAL(65,30) NOT NULL,
+    "is_polular" BOOLEAN NOT NULL,
     "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updated_at" TIMESTAMP(3),
 
@@ -77,7 +77,7 @@ CREATE TABLE "donations" (
     "plan_id" INTEGER,
     "user_id" UUID NOT NULL,
     "amount" DECIMAL(65,30) NOT NULL,
-    "type" "DonationType" NOT NULL,
+    "type" TEXT NOT NULL,
     "price" DECIMAL(65,30) NOT NULL,
     "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updated_at" TIMESTAMP(3),
@@ -132,7 +132,7 @@ CREATE TABLE "pets" (
     "gender" TEXT NOT NULL,
     "color" TEXT NOT NULL,
     "behavior" TEXT[],
-    "profile_picture" TEXT,
+    "profile_picture" JSONB,
     "category_id" INTEGER NOT NULL,
     "breed_id" INTEGER NOT NULL,
     "shelter_id" UUID NOT NULL,
@@ -146,7 +146,7 @@ CREATE TABLE "pets" (
 CREATE TABLE "pet_photos" (
     "id" SERIAL NOT NULL,
     "pet_id" INTEGER NOT NULL,
-    "url" TEXT NOT NULL,
+    "url" JSONB,
     "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updated_at" TIMESTAMP(3),
 

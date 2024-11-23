@@ -2105,40 +2105,12 @@ INSERT INTO districts (code, name, province_id, department_id, updated_at) VALUE
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-INSERT INTO plans (name, title, description, price, created_at, updated_at) VALUES
-(
-'Life Saver', 
-'Make adoption possible', 
-'Your donation at this level provides comprehensive support for a rescued pet, covering all costs from intake to adoption.This includes food, medical treatments, spaying/neutering, microchipping, and behavioral training if needed. You’ll be giving a pet the best possible chance to find a loving home.',
-10, 
-NOW(), 
-NOW()
-),
-(
-'Small Help', 
-'A little goes a long way', 
-'Your donation will help cover the basic daily needs of our animals, such as food and fresh water. 
-With this contribution, we can ensure that every pet in our care is fed and comfortable while they wait for their forever home.',
-25, 
-NOW(), 
-NOW()
-),
-(
-'Full Care', 
-'Give a pet a second chance', 
-'By choosing this plan, you’ll be covering a pet’s full care package: food, vet visits, vaccinations, and any required medication.This level of support guarantees that no pet goes without the necessary attention and care they need to thrive.',
-50, 
-NOW(), 
-NOW()
-),
-(
-'Hero of the Day', 
-'Be a hero for a pet today', 
-'This plan helps provide both food and essential veterinary care for our animals.Your donation ensures that pets receive regular check-ups, vaccinations, and any immediate treatments they might need to stay healthy and adoptable.',
-100, 
-NOW(), 
-NOW()
-);
+INSERT INTO plans ( product_id, code_one_time, code_subscription,  name, title, description, price, is_polular, created_at, updated_at) VALUES
+('prod_RGCsz3KIosS2Lx', 'price_1QONLDGbNy5Q0IZg7Y22kvEs',  'price_1QNgSYGbNy5Q0IZgftv530KC', 'Life Saver','Make adoption possible', 'Help a rescued pet transition to a loving home by covering essential care and adoption preparation.',10,false,NOW(), NOW()) ,
+('prod_RGCurBH4qGz90M', 'price_1QONKqGbNy5Q0IZg0OHS3mj5',  'price_1QNgUSGbNy5Q0IZgHwKwahcw', 'Small Help', 'A little goes a long way', 'Provide daily necessities like food and water to keep pets comfortable as they await adoption.', 5,false, NOW(), NOW()),
+('prod_RGCwVO8LAbCXr7', 'price_1QONJzGbNy5Q0IZgvulCclhB',  'price_1QNgWNGbNy5Q0IZgqhj6ykpk','Full Care', 'Give a pet a second chance', 'Ensure a pet gets everything they need, from food to medical care, for a fresh start in life.',50,true, NOW(), NOW()),
+('prod_RGCxBEchzLdKGj', 'price_1QONIGGbNy5Q0IZgZogU81Tp',  'price_1QNgXsGbNy5Q0IZgjhV9veUa', 'Hero of the Day', 'Be a hero for a pet today', 'Support advanced care and treatments, giving pets the health they need to thrive and find a home.',100,false,NOW(),NOW());
+
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -2203,17 +2175,18 @@ INSERT INTO shelters (name, address, phone, email, district_id, shelter_id, crea
 
 -- Insert dogs
 INSERT INTO pets (name, description, birthdate, weight, height, gender, color, behavior, profile_picture, category_id, breed_id, shelter_id, created_at, updated_at) VALUES
-('Buddy', 'A friendly and energetic Labrador.', '2020-06-15', 30.5, 60.0, 'Male', 'Yellow', '{"Friendly", "Active"}', 'buddy.jpg', 1, 1, '123e4567-e89b-12d3-a456-426614174000', NOW(), NOW()),
-('Max', 'A playful and loyal German Shepherd.', '2019-03-10', 35.0, 65.0, 'Male', 'Black and Tan', '{"Loyal", "Playful"}', 'max.jpg', 1, 2, '123e4567-e89b-12d3-a456-426614174000', NOW(), NOW()),
-('Bella', 'A sweet and loving Beagle.', '2021-09-20', 12.0, 45.0, 'Female', 'Tri-color', '{"Gentle", "Friendly"}', 'bella.jpg', 1, 5, '123e4567-e89b-12d3-a456-426614174001', NOW(), NOW());
+('Buddy', 'A friendly and energetic Labrador.', '2020-06-15', 30.5, 60.0, 'Male', 'Yellow', '{"Friendly", "Active"}', ' { "secure_url": "buddy.jpg" , "public_id": "buddy.jpg" }', 1, 1, '123e4567-e89b-12d3-a456-426614174000', NOW(), NOW()),
+('Max', 'A playful and loyal German Shepherd.', '2019-03-10', 35.0, 65.0, 'Male', 'Black and Tan', '{"Loyal", "Playful"}', ' { "secure_url": "max.jpg" , "public_id": "max.jpg" }', 1, 2, '123e4567-e89b-12d3-a456-426614174000', NOW(), NOW()),
+('Bella', 'A sweet and loving Beagle.', '2021-09-20', 12.0, 45.0, 'Female', 'Tri-color', '{"Gentle", "Friendly"}', ' { "secure_url": "bella.jpg" , "public_id": "bella.jpg" }', 1, 5, '123e4567-e89b-12d3-a456-426614174001', NOW(), NOW());
+
 
 -- Insert cats
 INSERT INTO pets (name, description, birthdate, weight, height, gender, color, behavior, profile_picture, category_id, breed_id, shelter_id, created_at, updated_at) VALUES
-('Luna', 'A calm and curious Siamese cat.', '2020-11-05', 4.0, 30.0, 'Female', 'Cream', '{"Curious", "Gentle"}', 'luna.jpg', 2, 21, '123e4567-e89b-12d3-a456-426614174001', NOW(), NOW()),
-('Oliver', 'A playful Maine Coon cat.', '2018-05-12', 6.5, 40.0, 'Male', 'Brown Tabby', '{"Playful", "Friendly"}', 'oliver.jpg', 2, 22, '123e4567-e89b-12d3-a456-426614174002', NOW(), NOW()),
-('Milo', 'A fluffy Ragdoll with blue eyes.', '2021-02-22', 5.2, 35.0, 'Male', 'Blue Bicolor', '{"Loving", "Playful"}', 'milo.jpg', 2, 22, '123e4567-e89b-12d3-a456-426614174001', NOW(), NOW());
+('Luna', 'A calm and curious Siamese cat.', '2020-11-05', 4.0, 30.0, 'Female', 'Cream', '{"Curious", "Gentle"}', '{ "secure_url": "luna.jpg", "public_id": "123456" }', 2, 21, '123e4567-e89b-12d3-a456-426614174001', NOW(), NOW()),
+('Oliver', 'A playful Maine Coon cat.', '2018-05-12', 6.5, 40.0, 'Male', 'Brown Tabby', '{"Playful", "Friendly"}', '{ "secure_url": "oliver.jpg", "public_id": "123456" }', 2, 22, '123e4567-e89b-12d3-a456-426614174002', NOW(), NOW()),
+('Milo', 'A fluffy Ragdoll with blue eyes.', '2021-02-22', 5.2, 35.0, 'Male', 'Blue Bicolor', '{"Loving", "Playful"}', '{ "secure_url": "milo.jpg", "public_id": "123456" }', 2, 22, '123e4567-e89b-12d3-a456-426614174001', NOW(), NOW());
 
 -- Insert hamsters
 INSERT INTO pets (name, description, birthdate, weight, height, gender, color, behavior, profile_picture, category_id, breed_id, shelter_id, created_at, updated_at) VALUES
-('Nibbles', 'A cute and energetic Syrian Hamster.', '2022-08-15', 0.3, 8.0, 'Male', 'Golden', '{"Active", "Curious"}', 'nibbles.jpg', 3, 32, '123e4567-e89b-12d3-a456-426614174002', NOW(), NOW()),
-('Squeaky', 'A shy Russian Dwarf Hamster.', '2023-04-10', 0.2, 6.0, 'Female', 'Grey', '{"Shy", "Quiet"}', 'squeaky.jpg', 3, 32, '123e4567-e89b-12d3-a456-426614174001', NOW(), NOW());
+('Nibbles', 'A cute and energetic Syrian Hamster.', '2022-08-15', 0.3, 8.0, 'Male', 'Golden', '{"Active", "Curious"}', '{ "secure_url": "nibbles.jpg", "public_id": "123456" }', 3, 32, '123e4567-e89b-12d3-a456-426614174002', NOW(), NOW()),
+('Squeaky', 'A shy Russian Dwarf Hamster.', '2023-04-10', 0.2, 6.0, 'Female', 'Grey', '{"Shy", "Quiet"}', '{ "secure_url": "nibbles.jpg", "public_id": "123456" }', 3, 32, '123e4567-e89b-12d3-a456-426614174002', NOW(), NOW());

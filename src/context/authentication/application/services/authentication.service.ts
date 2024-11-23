@@ -69,9 +69,7 @@ export default class AuthenticationService {
 			password: params.password,
 			metadata: { channel },
 		});
-
 		const password = await this.bcryptManager.hash(params.password);
-
 		await this.userRepository.create({
 			userId: authData.id,
 			...params,
