@@ -79,18 +79,18 @@ model User {
 }
 
 model Plan {
-  planId          Int        @id @default(autoincrement()) @map("plan_id")
-  productId       String     @map("product_id")
-  codeOneTime     String     @map("code_one_time")
+  planId           Int        @id @default(autoincrement()) @map("plan_id")
+  productId        String     @map("product_id")
+  codeOneTime      String     @map("code_one_time")
   codeSubscription String     @map("code_subscription")
-  name            String
-  title           String
-  description     String
-  price           Decimal
-  isPolular       Boolean    @map("is_polular")
-  donations       Donation[]
-  createdAt       DateTime   @default(now()) @map("created_at")
-  updatedAt       DateTime?  @updatedAt @map("updated_at")
+  name             String
+  title            String
+  description      String
+  price            Decimal    @db.Decimal(6, 2)
+  isPolular        Boolean    @map("is_polular")
+  donations        Donation[]
+  createdAt        DateTime   @default(now()) @map("created_at")
+  updatedAt        DateTime?  @updatedAt @map("updated_at")
 
   @@map("plans")
 }
@@ -99,9 +99,11 @@ model Donation {
   donationId String    @id @default(dbgenerated("gen_random_uuid()")) @map("donation_id") @db.Uuid
   planId     Int?      @map("plan_id")
   plan       Plan?     @relation(fields: [planId], references: [planId])
-  userId     String    @map("user_id") @db.Uuid
-  user       User      @relation(fields: [userId], references: [userId])
-  amount     Decimal
+  userId     String?   @map("user_id") @db.Uuid
+  user       User?     @relation(fields: [userId], references: [userId])
+  email      String?
+  name       String?
+  amount     Decimal   @db.Decimal(6, 2)
   type       String
   status     String
   createdAt  DateTime  @default(now()) @map("created_at")

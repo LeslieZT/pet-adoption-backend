@@ -15,11 +15,8 @@ const controller = donationContainer.get<DonationController>(DONATION_TYPES.Dona
 
 export const donationRouter = Router();
 
-donationRouter.post(
-	"/checkout",
-	middleware.authorize.bind(middleware),
-	asyncHandler(controller.checkout.bind(controller))
-);
+donationRouter.post("/checkout", asyncHandler(controller.checkout.bind(controller)));
+donationRouter.post("/custom-checkout", asyncHandler(controller.customCheckout.bind(controller)));
 donationRouter.get("/success", asyncHandler(controller.success.bind(controller)));
 donationRouter.get("/cancel", asyncHandler(controller.cancel.bind(controller)));
 donationRouter.get(

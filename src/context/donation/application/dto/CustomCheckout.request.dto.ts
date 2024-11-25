@@ -1,14 +1,14 @@
-import { IsDefined, IsEnum, IsOptional, IsString } from "class-validator";
+import { Equals, IsDefined, IsNumber, IsOptional, IsString } from "class-validator";
 import { PaymentMode } from "../../domain/enum/PaymentMode.enum";
 
-export class CheckoutRequestDto {
-	@IsEnum(PaymentMode)
+export class CustomCheckoutRequestDto {
+	@Equals(PaymentMode.ONE_TIME)
 	@IsDefined()
 	mode: PaymentMode;
 
-	@IsString()
+	@IsNumber()
 	@IsDefined()
-	code: string;
+	amount: number;
 
 	@IsOptional()
 	@IsString()

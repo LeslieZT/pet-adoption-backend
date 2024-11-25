@@ -11,7 +11,7 @@ export class UserMapper {
 			email: user.email,
 			phone: user.phone,
 			address: user.address,
-			avatar: user.avatar,
+			avatar: user.avatar as unknown as Record<string, unknown>,
 			district: {
 				districtId: user.district.districtId,
 				provinceId: user.district.provinceId,

@@ -5,7 +5,7 @@ export class UserResponseDto {
 	email: string;
 	phone: string;
 	address: string;
-	avatar: string;
+	avatar: Record<string, unknown>;
 	district: {
 		districtId: number;
 		provinceId: number;

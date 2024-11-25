@@ -1,7 +1,11 @@
 import Stripe from "stripe";
 import { injectable } from "inversify";
 import { config } from "./../../../../config/config";
-import { CheckoutParams, PaymentAdapter } from "../../application/adapter/payment.adapter";
+import {
+	CheckoutParams,
+	CustomCheckoutParams,
+	PaymentAdapter,
+} from "../../application/adapter/payment.adapter";
 
 const { STRIPE_SECRET_KEY, FRONTEND_URL, BACKEND_URL } = config();
 
@@ -20,6 +24,32 @@ export class StripePaymentAdapter implements PaymentAdapter {
 			line_items: [
 				{
 					price: params.priceId,
+					quantity: 1,
+				},
+			],
+			mode: params.mode,
+			success_url: `${BACKEND_URL}/api/v1/donations/success?session_id={CHECKOUT_SESSION_ID}`,
+			cancel_url: `${BACKEND_URL}/api/v1/donations/cancel`,
+			metadata: {
+				donationId: params.donationId,
+			},
+		});
+		return session;
+	}
+
+	async customCheckout(params: CustomCheckoutParams) {
+		const session = await this.client.checkout.sessions.create({
+			customer: params.customerId,
+			payment_method_types: ["card"],
+			line_items: [
+				{
+					price_data: {
+						currency: "USD",
+						product_data: {
+							name: `Pet Adoption - ${params.donationId}`,
+						},
+						unit_amount: params.amount * 100,
+					},
 					quantity: 1,
 				},
 			],

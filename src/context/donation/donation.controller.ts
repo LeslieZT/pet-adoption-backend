@@ -4,7 +4,11 @@ import { inject, injectable } from "inversify";
 import { config } from "../../config/config";
 import { DONATION_TYPES } from "./infrastruture/ioc/donation.types";
 import { DonationService } from "./application/services/donation.service";
-import { CheckoutCallbackRequestDto, CheckoutRequestDto } from "./application/dto";
+import {
+	CheckoutCallbackRequestDto,
+	CheckoutRequestDto,
+	CustomCheckoutRequestDto,
+} from "./application/dto";
 import RequestValidator from "../../utils/request-validator";
 
 const { FRONTEND_URL } = config();
@@ -17,14 +21,24 @@ export class DonationController {
 	) {}
 
 	async checkout(req: Request, res: Response) {
-		const payload = req["payload"];
 		const checkoutDto = plainToClass(CheckoutRequestDto, req.body);
 		const error = await RequestValidator.validate(checkoutDto);
 		if (error) {
 			res.status(error.status).json(error);
 			return;
 		}
-		const response = await this.donationService.checkeout(payload, checkoutDto);
+		const response = await this.donationService.checkout(checkoutDto);
+		res.status(response.status).json(response);
+	}
+
+	async customCheckout(req: Request, res: Response) {
+		const checkoutDto = plainToClass(CustomCheckoutRequestDto, req.body);
+		const error = await RequestValidator.validate(checkoutDto);
+		if (error) {
+			res.status(error.status).json(error);
+			return;
+		}
+		const response = await this.donationService.customCheckout(checkoutDto);
 		res.status(response.status).json(response);
 	}
 
@@ -38,7 +52,7 @@ export class DonationController {
 			return;
 		}
 		await this.donationService.success(checkoutCbDto);
-		res.redirect(`${FRONTEND_URL}/donations/success`);
+		res.redirect(`${FRONTEND_URL}/donate/success`);
 	}
 
 	async cancel(req: Request, res: Response) {
@@ -51,7 +65,7 @@ export class DonationController {
 			return;
 		}
 		await this.donationService.cancel(checkoutCbDto);
-		res.redirect(`${FRONTEND_URL}/donations/success`);
+		res.redirect(`${FRONTEND_URL}/donate/cancel`);
 	}
 
 	async getCustomerPortal(req: Request, res: Response) {
