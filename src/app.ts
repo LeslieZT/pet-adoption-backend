@@ -22,7 +22,7 @@ app.use(
 		methods: ["GET", "POST", "PUT", "DELETE"],
 	})
 );
-app.use(httpLoggerMiddleware);
+// app.use(httpLoggerMiddleware);
 app.use(express.json());
 app.use(cookieParser());
 app.use("/api/v1", mainRouter);

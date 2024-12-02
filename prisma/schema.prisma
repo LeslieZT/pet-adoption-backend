@@ -118,6 +118,8 @@ model Shelter {
   address    String
   phone      String
   email      String
+  latitude   Decimal
+  longitude  Decimal
   districtId Int       @map("district_id")
   district   District  @relation(fields: [districtId], references: [districtId])
   userId     String?   @map("user_id") @db.Uuid
@@ -125,6 +127,7 @@ model Shelter {
   pets       Pet[]
   createdAt  DateTime  @default(now()) @map("created_at")
   updatedAt  DateTime? @updatedAt @map("updated_at")
+
 
   @@map("shelters")
 }
@@ -172,6 +175,7 @@ model Pet {
   photos         PetPhoto[]
   adoptions      Adoption[]
   favoritePets   FavoritePet[]
+  status         String        @default("Available")  // 'Available' | 'Adopted'; 
   createdAt      DateTime      @default(now()) @map("created_at")
   updatedAt      DateTime?     @updatedAt @map("updated_at")
 

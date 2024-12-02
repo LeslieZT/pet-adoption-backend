@@ -5,10 +5,10 @@ export class UserResponseDto {
 	email: string;
 	phone: string;
 	address: string;
-	avatar: Record<string, unknown>;
-	district: {
-		districtId: number;
-		provinceId: number;
-		departmentId: number;
-	};
+	birthdate: Date;
+	channel: string;
+	avatar: Record<string, string>;
+	districtId: number;
+	provinceId: number;
+	departmentId: number;
 }

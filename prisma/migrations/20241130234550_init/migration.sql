@@ -63,7 +63,7 @@ CREATE TABLE "plans" (
     "name" TEXT NOT NULL,
     "title" TEXT NOT NULL,
     "description" TEXT NOT NULL,
-    "price" DECIMAL(65,30) NOT NULL,
+    "price" DECIMAL(6,2) NOT NULL,
     "is_polular" BOOLEAN NOT NULL,
     "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updated_at" TIMESTAMP(3),
@@ -75,10 +75,12 @@ CREATE TABLE "plans" (
 CREATE TABLE "donations" (
     "donation_id" UUID NOT NULL DEFAULT gen_random_uuid(),
     "plan_id" INTEGER,
-    "user_id" UUID NOT NULL,
-    "amount" DECIMAL(65,30) NOT NULL,
+    "user_id" UUID,
+    "email" TEXT,
+    "name" TEXT,
+    "amount" DECIMAL(6,2) NOT NULL,
     "type" TEXT NOT NULL,
-    "price" DECIMAL(65,30) NOT NULL,
+    "status" TEXT NOT NULL,
     "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updated_at" TIMESTAMP(3),
 
@@ -92,6 +94,8 @@ CREATE TABLE "shelters" (
     "address" TEXT NOT NULL,
     "phone" TEXT NOT NULL,
     "email" TEXT NOT NULL,
+    "latitude" DECIMAL(65,30) NOT NULL,
+    "longitude" DECIMAL(65,30) NOT NULL,
     "district_id" INTEGER NOT NULL,
     "user_id" UUID,
     "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -136,6 +140,7 @@ CREATE TABLE "pets" (
     "category_id" INTEGER NOT NULL,
     "breed_id" INTEGER NOT NULL,
     "shelter_id" UUID NOT NULL,
+    "status" TEXT NOT NULL DEFAULT 'Available',
     "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updated_at" TIMESTAMP(3),
 
@@ -194,7 +199,7 @@ ALTER TABLE "users" ADD CONSTRAINT "users_district_id_fkey" FOREIGN KEY ("distri
 ALTER TABLE "donations" ADD CONSTRAINT "donations_plan_id_fkey" FOREIGN KEY ("plan_id") REFERENCES "plans"("plan_id") ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "donations" ADD CONSTRAINT "donations_user_id_fkey" FOREIGN KEY ("user_id") REFERENCES "users"("user_id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "donations" ADD CONSTRAINT "donations_user_id_fkey" FOREIGN KEY ("user_id") REFERENCES "users"("user_id") ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "shelters" ADD CONSTRAINT "shelters_district_id_fkey" FOREIGN KEY ("district_id") REFERENCES "districts"("district_id") ON DELETE RESTRICT ON UPDATE CASCADE;

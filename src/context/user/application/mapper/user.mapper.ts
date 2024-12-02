@@ -11,12 +11,12 @@ export class UserMapper {
 			email: user.email,
 			phone: user.phone,
 			address: user.address,
-			avatar: user.avatar as unknown as Record<string, unknown>,
-			district: {
-				districtId: user.district.districtId,
-				provinceId: user.district.provinceId,
-				departmentId: user.district.departmentId,
-			},
+			avatar: user.avatar as Record<string, string>,
+			channel: user.channel,
+			birthdate: user.birthdate,
+			districtId: user.district?.districtId ?? null,
+			provinceId: user.district?.provinceId ?? null,
+			departmentId: user.district?.departmentId ?? null,
 		};
 	}
 }
