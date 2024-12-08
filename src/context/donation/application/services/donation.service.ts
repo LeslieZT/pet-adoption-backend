@@ -176,4 +176,10 @@ export class DonationService {
 		}
 		return new ApiResponse({ status: HTTP_OK, data: { url: session.url } });
 	}
+
+	async getDonationByUser(payload: PayloadRequest): Promise<ApiResponse> {
+		const { idUser } = payload;
+		const donations = await this.donationRepository.findAllByUser(idUser);
+		return new ApiResponse({ status: HTTP_OK, data: donations });
+	}
 }

@@ -73,4 +73,10 @@ export class DonationController {
 		const response = await this.donationService.getCustomerPortal(payload);
 		res.status(response.status).json(response);
 	}
+
+	async getDonationByUser(req: Request, res: Response) {
+		const payload = req["payload"];
+		const response = await this.donationService.getDonationByUser(payload);
+		res.status(response.status).json(response);
+	}
 }

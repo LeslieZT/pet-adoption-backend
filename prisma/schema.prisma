@@ -107,7 +107,7 @@ model Donation {
   type       String
   status     String
   createdAt  DateTime  @default(now()) @map("created_at")
-  updatedAt  DateTime? @updatedAt @map("updated_at")
+  updatedAt  DateTime? @updatedAt @map("updated_at")  
 
   @@map("donations")
 }
@@ -195,7 +195,7 @@ model PetPhoto {
 
 model Adoption {
   adoptionId  String    @id @default(dbgenerated("gen_random_uuid()")) @map("adoption_id") @db.Uuid
-  application Json
+  application Json    // "pendeing" | "success" | "failed"
   status      String
   petId       Int       @map("pet_id")
   pet         Pet       @relation(fields: [petId], references: [petId])

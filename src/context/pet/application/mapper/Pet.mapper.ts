@@ -89,7 +89,7 @@ export class PetMapper {
 				latitude: pet.shelter.latitude as string,
 				longitude: pet.shelter.longitude as string,
 			},
-			photos: pet.photos.map((photo: any) => photo.url),
+			photos: pet.photos.map((photo: any) => photo.url.url),
 			isFavorite,
 			applications,
 		};

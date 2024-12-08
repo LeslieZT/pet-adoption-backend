@@ -17,7 +17,8 @@ export class StorageManagerController {
 	async uploadFiles(req: Request & { files: FileDto[] }, res: Response) {
 		const files = req?.files;
 		const payload = req["payload"] as PayloadRequest;
-		const response = await this.storageManagerService.uploadFiles(files, payload);
+		const folder = req.body.folder as string;
+		const response = await this.storageManagerService.uploadFiles(files, folder || payload.idUser);
 		res.status(response.status).json(response);
 	}
 

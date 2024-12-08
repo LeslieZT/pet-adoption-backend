@@ -17,3 +17,14 @@ export type DonationCreation = Omit<
 	DonationEntity,
 	"donationId" | "createdAt" | "updatedAt" | "email" | "name"
 >;
+
+export interface DonationList {
+	donationId: string;
+	createdAt: Date;
+	type: string;
+	status: string;
+	plan: {
+		name: true;
+		price: number;
+	};
+}

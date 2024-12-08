@@ -7,7 +7,7 @@ export interface UserEntity {
 	lastName: string;
 	email: string;
 	password: string;
-	avatar?: JsonValue | null;
+	avatar?: Record<string, unknown> | null;
 	phone?: string | null;
 	birthdate?: Date | null;
 	address?: string | null;

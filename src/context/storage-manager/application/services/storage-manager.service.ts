@@ -15,13 +15,13 @@ export class StorageManagerService {
 		private storageAdapter: StorageAdapter
 	) {}
 
-	async uploadFiles(files: FileDto[], payload: PayloadRequest) {
+	async uploadFiles(files: FileDto[], folder: string) {
 		const errors = [];
 		const data = [];
 
 		for (const file of files) {
 			try {
-				const response = await this.storageAdapter.uploadFile(file.buffer, payload.idUser);
+				const response = await this.storageAdapter.uploadFile(file.buffer, folder);
 				data.push({
 					fileName: file.originalname,
 					url: response.secure_url,
@@ -32,7 +32,6 @@ export class StorageManagerService {
 				errors.push(UPLOAD_FILE_ERROR(`The file ${error.originalname} could not be uploaded`));
 			}
 		}
-
 		return new ApiResponse({ status: HTTP_OK, data, error: errors });
 	}
 

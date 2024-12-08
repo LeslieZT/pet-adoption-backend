@@ -24,3 +24,9 @@ donationRouter.get(
 	middleware.authorize.bind(middleware),
 	asyncHandler(controller.getCustomerPortal.bind(controller))
 );
+
+donationRouter.get(
+	"/my-donations",
+	middleware.authorize.bind(middleware),
+	asyncHandler(controller.getDonationByUser.bind(controller))
+);

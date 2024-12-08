@@ -1,6 +1,10 @@
 import { injectable } from "inversify";
 import { DonationRepository } from "../../domain/repositories/donation.repository";
-import { DonationCreation, DonationEntity } from "../../domain/entities/Donation.entity";
+import {
+	DonationCreation,
+	DonationEntity,
+	DonationList,
+} from "../../domain/entities/Donation.entity";
 import { prisma } from "../../../../database/database";
 
 @injectable()
@@ -18,5 +22,29 @@ export class DonationRepositoryImpl implements DonationRepository {
 			},
 			data: data,
 		});
+	}
+
+	async findAllByUser(userId: string): Promise<DonationList[]> {
+		const donations = (await prisma.donation.findMany({
+			where: {
+				userId: userId,
+				status: {
+					not: "pending",
+				},
+			},
+			select: {
+				donationId: true,
+				plan: {
+					select: {
+						name: true,
+						price: true,
+					},
+				},
+				type: true,
+				status: true,
+				createdAt: true,
+			},
+		})) as unknown as DonationList[];
+		return donations;
 	}
 }

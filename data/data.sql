@@ -2105,20 +2105,26 @@ INSERT INTO districts (code, name, province_id, department_id, updated_at) VALUE
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-INSERT INTO plans ( product_id, code_one_time, code_subscription,  name, title, description, price, is_polular, created_at, updated_at) VALUES
-('prod_RGCsz3KIosS2Lx', 'price_1QONLDGbNy5Q0IZg7Y22kvEs',  'price_1QNgSYGbNy5Q0IZgftv530KC', 'Life Saver','Make adoption possible', 'Help a rescued pet transition to a loving home by covering essential care and adoption preparation.',10,false,NOW(), NOW()) ,
-('prod_RGCurBH4qGz90M', 'price_1QONKqGbNy5Q0IZg0OHS3mj5',  'price_1QNgUSGbNy5Q0IZgHwKwahcw', 'Small Help', 'A little goes a long way', 'Provide daily necessities like food and water to keep pets comfortable as they await adoption.', 5,false, NOW(), NOW()),
-('prod_RGCwVO8LAbCXr7', 'price_1QONJzGbNy5Q0IZgvulCclhB',  'price_1QNgWNGbNy5Q0IZgqhj6ykpk','Full Care', 'Give a pet a second chance', 'Ensure a pet gets everything they need, from food to medical care, for a fresh start in life.',50,true, NOW(), NOW()),
-('prod_RGCxBEchzLdKGj', 'price_1QONIGGbNy5Q0IZgZogU81Tp',  'price_1QNgXsGbNy5Q0IZgjhV9veUa', 'Hero of the Day', 'Be a hero for a pet today', 'Support advanced care and treatments, giving pets the health they need to thrive and find a home.',100,false,NOW(),NOW());
+-- INSERT INTO plans ( product_id, code_one_time, code_subscription,  name, title, description, price, is_polular, created_at, updated_at) VALUES
+-- ('prod_RGCsz3KIosS2Lx', 'price_1QONLDGbNy5Q0IZg7Y22kvEs',  'price_1QNgSYGbNy5Q0IZgftv530KC', 'Life Saver','Make adoption possible', 'Help a rescued pet transition to a loving home by covering essential care and adoption preparation.',10,false,NOW(), NOW()) ,
+-- ('prod_RGCurBH4qGz90M', 'price_1QONKqGbNy5Q0IZg0OHS3mj5',  'price_1QNgUSGbNy5Q0IZgHwKwahcw', 'Small Help', 'A little goes a long way', 'Provide daily necessities like food and water to keep pets comfortable as they await adoption.', 5,false, NOW(), NOW()),
+-- ('prod_RGCwVO8LAbCXr7', 'price_1QONJzGbNy5Q0IZgvulCclhB',  'price_1QNgWNGbNy5Q0IZgqhj6ykpk','Full Care', 'Give a pet a second chance', 'Ensure a pet gets everything they need, from food to medical care, for a fresh start in life.',50,true, NOW(), NOW()),
+-- ('prod_RGCxBEchzLdKGj', 'price_1QONIGGbNy5Q0IZgZogU81Tp',  'price_1QNgXsGbNy5Q0IZgjhV9veUa', 'Hero of the Day', 'Be a hero for a pet today', 'Support advanced care and treatments, giving pets the health they need to thrive and find a home.',100,false,NOW(),NOW());
 
+INSERT INTO plans (product_id, code_one_time, code_subscription, name, title, description, price, is_polular, created_at, updated_at) VALUES
+('prod_RGCsz3KIosS2Lx', 'price_1QONLDGbNy5Q0IZg7Y22kvEs', 'price_1QNgSYGbNy5Q0IZgftv530KC', 'Salvador de Vidas', 'Haz posible la adopción', 'Ayuda a una mascota rescatada a transicionar a un hogar amoroso cubriendo cuidados esenciales y preparación para la adopción.', 10, false, NOW(), NOW()),
+('prod_RGCurBH4qGz90M', 'price_1QONKqGbNy5Q0IZg0OHS3mj5', 'price_1QNgUSGbNy5Q0IZgHwKwahcw', 'Pequeña Ayuda', 'Un poco hace mucho', 'Proporciona necesidades diarias como comida y agua para mantener a las mascotas cómodas mientras esperan adopción.', 5, false, NOW(), NOW()),
+('prod_RGCwVO8LAbCXr7', 'price_1QONJzGbNy5Q0IZgvulCclhB', 'price_1QNgWNGbNy5Q0IZgqhj6ykpk', 'Cuidado Completo', 'Dale a una mascota una segunda oportunidad', 'Asegúrate de que una mascota reciba todo lo que necesita, desde comida hasta atención médica, para un nuevo comienzo en la vida.', 50, true, NOW(), NOW()),
+('prod_RGCxBEchzLdKGj', 'price_1QONIGGbNy5Q0IZgZogU81Tp', 'price_1QNgXsGbNy5Q0IZgjhV9veUa', 'Héroe del Día', 'Sé un héroe para una mascota hoy', 'Apoya cuidados avanzados y tratamientos, dando a las mascotas la salud que necesitan para prosperar y encontrar un hogar.', 100, false, NOW(), NOW());
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 INSERT INTO pet_categories (pet_category_id, name, updated_at) VALUES
-(1, 'Dog', NOW()),
-(2, 'Cat', NOW()),
-(3, 'Hamster', NOW());
+(1, 'Perro', NOW()),
+(2, 'Gato', NOW()),
+(3, 'Hamster', NOW()),
+(4, 'Conejo', NOW());
 
 
 INSERT INTO pet_breeds (pet_breed_id, name, category_id, updated_at) VALUES
@@ -2139,7 +2145,10 @@ INSERT INTO pet_breeds (pet_breed_id, name, category_id, updated_at) VALUES
 (15, 'Pomeranian', 1, NOW()),
 (16, 'Pitbull Terrier', 1, NOW()),
 (17, 'Schnauzer', 1, NOW()),
-(18, 'Siberian Husky', 1, NOW());
+(18, 'Siberian Husky', 1, NOW()),
+(40, 'Staffordshire Bull Terrier', 1, NOW())
+(41, "Husky siberiano, cruce de border collie", 1, NOW()),
+;
 
 
 INSERT INTO pet_breeds (pet_breed_id, name, category_id, updated_at) VALUES
@@ -2164,17 +2173,42 @@ INSERT INTO pet_breeds (pet_breed_id, name, category_id, updated_at) VALUES
 (34,'Roborovski Hamster', 3, NOW()),
 (35,'Chinese Hamster', 3, NOW());
 
+
+INSERT INTO pet_breeds (pet_breed_id, name, category_id, updated_at) VALUES
+(36,'Holland Lop', 4, NOW()),
+(37, 'French Lop', 4, NOW()),
+(38,'Havana', 4, NOW()),
+(39,'French Angora', 4, NOW());
+
+
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 INSERT INTO shelters (name, address, phone, email, district_id, shelter_id, latitude, longitude, created_at, updated_at) VALUES
-('Happy Tails Shelter', '123 Bark Ave, Downtown', '555-1234', 'contact@happytails.com', 1, '123e4567-e89b-12d3-a456-426614174000', 51.505, -0.09, NOW(), NOW()),
-('Paws and Claws Shelter', '456 Meow St, Uptown', '555-5678', 'info@pawsandclaws.com', 2, '123e4567-e89b-12d3-a456-426614174001', 51.505, -0.09, NOW(), NOW()),
-('Animal Rescue Haven', '789 Pet Blvd, Suburbia', '555-9101', 'support@animalrescue.com', 3, '123e4567-e89b-12d3-a456-426614174002', 51.505, -0.09, NOW(), NOW());
+('Hogar de Esperanza Animal', 'Av. Los Pinos 123, Miraflores', '555-4321', 'info@esperanzaanimal.com', 1302, '123e4567-e89b-12d3-a456-426614174003', -12.123, -77.029, NOW(), NOW()),
+('Refugio Patitas Felices', 'Jr. Los Gatos 456, Surco', '555-5679', 'contacto@patitasfelices.com', 1320, '123e4567-e89b-12d3-a456-426614174004', -12.105, -77.035, NOW(), NOW()),
+('Centro de Rescate Vida Animal', 'Calle Los Amores 789, Barranco', '555-6781', 'ayuda@vidaanimal.com', 1284, '123e4567-e89b-12d3-a456-426614174005', -12.144, -77.019, NOW(), NOW()),
+('Refugio Corazón Animal', 'Av. Principal 321, San Isidro', '555-8910', 'corazon@refugioanimal.com', 1311 , '123e4567-e89b-12d3-a456-426614174006', -12.098, -77.036, NOW(), NOW()),
+('Hogar Refugio y Amor', 'Jr. Las Flores 654, La Molina', '555-2345', 'contacto@refugioyamor.com', 1294, '123e4567-e89b-12d3-a456-426614174007', -12.090, -76.948, NOW(), NOW()),
+('Patitas de Amor Refugio', 'Av. Las Palmeras 987, San Borja', '555-3456', 'info@patitasdeamor.com', 1310, '123e4567-e89b-12d3-a456-426614174008', -12.111, -76.991, NOW(), NOW()),
+('Amigos por Siempre Refugio', 'Jr. Los Perros 112, Jesús María', '555-4567', 'ayuda@amigosporsiempre.com', 1293, '123e4567-e89b-12d3-a456-426614174009', -12.075, -77.048, NOW(), NOW()),
+('Casa Animal del Perú', 'Calle Mascotas 556, Chorrillos', '555-7893', 'ayuda@casaanimalperu.com', 1288, '123e4567-e89b-12d3-a456-426614174011', -12.180, -77.016, NOW(), NOW());
 
+INSERT INTO shelters (name, address, phone, email, district_id, shelter_id, latitude, longitude, created_at, updated_at) VALUES
+-- Refugios en Puno
+('Refugio Lago Azul', 'Av. Titicaca 123, Juliaca', '051-5678', 'contacto@refugiolagoazul.com', 1718, '123e4567-e89b-12d3-a456-426614174013', -15.499, -70.133, NOW(), NOW()),
+('Hogar Animal Uros', 'Jr. Los Andes 456, Puno', '051-6789', 'info@hogaranimaluros.com', 1630, '123e4567-e89b-12d3-a456-426614174014', -15.840, -70.021, NOW(), NOW()),
+-- Refugios en Arequipa
+('Refugio Esperanza Hunter', 'Calle Principal 321, Hunter', '054-1234', 'contacto@esperanzahunter.com', 341, '123e4567-e89b-12d3-a456-426614174017', -16.436, -71.555, NOW(), NOW()),
+('Patitas del Misti', 'Jr. El Volcán 112, Yanahuara', '054-8901', 'contacto@patitasdelmisti.com',360, '123e4567-e89b-12d3-a456-426614174016', -16.402, -71.548, NOW(), NOW());
 
 -- Insert dogs
 INSERT INTO pets (name, description, birthdate, weight, height, gender, color, behavior, profile_picture, category_id, breed_id, shelter_id, created_at, updated_at) VALUES
+('Buddy', 'A friendly and energetic Labrador.', '2020-06-15', 30.5, 60.0, 'Male', 'Yellow', '{"Friendly", "Active"}', ' { "secure_url": "buddy.jpg" , "public_id": "buddy.jpg" }', 1, 1, '123e4567-e89b-12d3-a456-426614174000', NOW(), NOW()),
+('Max', 'A playful and loyal German Shepherd.', '2019-03-10', 35.0, 65.0, 'Male', 'Black and Tan', '{"Loyal", "Playful"}', ' { "secure_url": "max.jpg" , "public_id": "max.jpg" }', 1, 2, '123e4567-e89b-12d3-a456-426614174000', NOW(), NOW()),
+('Bella', 'A sweet and loving Beagle.', '2021-09-20', 12.0, 45.0, 'Female', 'Tri-color', '{"Gentle", "Friendly"}', ' { "secure_url": "bella.jpg" , "public_id": "bella.jpg" }', 1, 5, '123e4567-e89b-12d3-a456-426614174001', NOW(), NOW());
+
+
 ('Buddy', 'A friendly and energetic Labrador.', '2020-06-15', 30.5, 60.0, 'Male', 'Yellow', '{"Friendly", "Active"}', ' { "secure_url": "buddy.jpg" , "public_id": "buddy.jpg" }', 1, 1, '123e4567-e89b-12d3-a456-426614174000', NOW(), NOW()),
 ('Max', 'A playful and loyal German Shepherd.', '2019-03-10', 35.0, 65.0, 'Male', 'Black and Tan', '{"Loyal", "Playful"}', ' { "secure_url": "max.jpg" , "public_id": "max.jpg" }', 1, 2, '123e4567-e89b-12d3-a456-426614174000', NOW(), NOW()),
 ('Bella', 'A sweet and loving Beagle.', '2021-09-20', 12.0, 45.0, 'Female', 'Tri-color', '{"Gentle", "Friendly"}', ' { "secure_url": "bella.jpg" , "public_id": "bella.jpg" }', 1, 5, '123e4567-e89b-12d3-a456-426614174001', NOW(), NOW());
@@ -2190,3 +2224,151 @@ INSERT INTO pets (name, description, birthdate, weight, height, gender, color, b
 INSERT INTO pets (name, description, birthdate, weight, height, gender, color, behavior, profile_picture, category_id, breed_id, shelter_id, created_at, updated_at) VALUES
 ('Nibbles', 'A cute and energetic Syrian Hamster.', '2022-08-15', 0.3, 8.0, 'Male', 'Golden', '{"Active", "Curious"}', '{ "secure_url": "nibbles.jpg", "public_id": "123456" }', 3, 32, '123e4567-e89b-12d3-a456-426614174002', NOW(), NOW()),
 ('Squeaky', 'A shy Russian Dwarf Hamster.', '2023-04-10', 0.2, 6.0, 'Female', 'Grey', '{"Shy", "Quiet"}', '{ "secure_url": "nibbles.jpg", "public_id": "123456" }', 3, 32, '123e4567-e89b-12d3-a456-426614174002', NOW(), NOW());
+
+
+-- ====================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================
+
+
+INSERT INTO pets (name, description, birthdate, weight, height, gender, color, behavior, profile_picture, category_id, breed_id, shelter_id, created_at, updated_at) 
+VALUES ('Creed', 'Creed es un hermoso Staffordshire Bull Terrier de 5 años con una energía desbordante y un corazón lleno de amor. Si buscas un compañero que te mantenga alerta, Creed puede ser la opción perfecta.||Creed está lleno de vida y siempre está listo para una aventura. Ya sea una caminata larga, un divertido juego de buscar la pelota o simplemente correr por el jardín, le encanta estar activo y comprometido. Tiene mucha energía para gastar y le iría bien en un hogar que le brinde mucho ejercicio y estimulación mental. Para sus paseos, Creed necesitaría estar atado con correa.||La familia actual de Creed comenta que sus cosas favoritas en el mundo son jugar al tira y afloja o jugar con sus juguetes de pelota.||Definitivamente también tiene un lado cariñoso y le encanta pasar tiempo con sus personas favoritas. Le encanta estar cerca de la gente para mimarlo y relajarse.||Creed no sería adecuado para vivir con gatos u otros perros. Sería más adecuado para hogares con niños mayores en edad de asistir a la escuela secundaria.', 
+		'2020-01-14', 24, 50, 'male', 'atigrado blanco', '{"Dulce", "Leal"}',
+		'{
+            "fileName": "Creed-profile.PNG",
+            "url": "https://res.cloudinary.com/dyntsz5qv/image/upload/v1733620530/123e4567-e89b-12d3-a456-426614174014/l5b9hypxopba7gs2vbmq.png",
+            "publicId": "123e4567-e89b-12d3-a456-426614174014/l5b9hypxopba7gs2vbmq"
+        }', 1, 40, '123e4567-e89b-12d3-a456-426614174014', NOW(), NOW());
+
+
+INSERT INTO pets (name, description, birthdate, weight, height, gender, color, behavior, profile_picture, category_id, breed_id, shelter_id, created_at, updated_at) 
+VALUES ('Willow', 'Los Willows suelen ser conocidos por su gracia, encanto y resistencia. Todo esto es cierto en el caso de nuestra preciosa Willow, que está siendo reubicada debido a un cambio en las circunstancias personales de su dueña. Cuando no está durmiendo la siesta o jugando con sus juguetes, a Willow le encanta salir a caminar. De hecho, sabe lo que significa la palabra ""W"" y corre por todos lados con entusiasmo antes de esperar junto a la puerta principal para salir.||Willow es una compañera adorable para su dueña y disfruta acurrucándose en el sofá por las noches. Willow puede tardar un tiempo en entablar una relación con nuevas personas, ya que no está acostumbrada a encontrarse con extraños a menudo. Está buscando un nuevo hogar familiar que le brinde el tiempo y la paciencia que necesita para adaptarse y ganar confianza. Debido a esto, Willow necesitaría conocer a sus adoptantes en varias ocasiones en el centro antes de volver a casa.||Willow no ha vivido con niños pequeños antes; por lo tanto, estaríamos buscando un hogar familiar con niños en edad de escuela secundaria o mayores.',
+		'2022-07-28', 30, 64, 'female', 'plateado', '{"Afectuosa", "Tranquila"}', 
+		'{
+            "fileName": "Willow-profile.PNG",
+            "url": "https://res.cloudinary.com/dyntsz5qv/image/upload/v1733621417/123e4567-e89b-12d3-a456-426614174014/zzmsm9o5e1wejxknwolk.png",
+            "publicId": "123e4567-e89b-12d3-a456-426614174014/zzmsm9o5e1wejxknwolk"
+        }', 1, 1, '123e4567-e89b-12d3-a456-426614174014', NOW(), NOW());
+
+INSERT INTO pets (name, description, birthdate, weight, height, gender, color, behavior, profile_picture, category_id, breed_id, shelter_id, created_at, updated_at)VALUES ('Toby', 'Es un tipo cariñoso y no hay nada que le guste más que pasar tiempo con sus personas favoritas y recibir mucha atención.||A Toby le gustan los paseos y le encanta conocer y saludar a otros perros cuando pasa, pero también le encanta acurrucarse en el sofá por la noche. A Toby también le encanta jugar, pero puede ser un poco entusiasta, por lo que puede ser más adecuado para una casa con niños en edad escolar.||Es un chico muy tranquilo y seguro que será un compañero fantástico. Si Toby parece ser el chico ideal para ti, envía tu solicitud hoy mismo. Ten en cuenta que Toby es un bulldog francés grande, ya que pesa 16,9 kg.||“Los perros de cara plana (braquicéfalos) sufren problemas de salud adicionales que pueden afectar su calidad de vida. Siempre recomendamos a quienes estén pensando en adoptar o comprar un perro de cara plana (braquicéfalo) que investiguen a fondo la raza de antemano. Nuestro equipo de expertos podrá darle consejos sobre ejercicio y control de peso, así como sobre cualquier ayuda que Frank pueda necesitar”.', '2022-08-13', 24, 45, 'male', 'gris blanco', '{"Alerta", "Juguetón"}', '{
+            "fileName": "Toby-profile.PNG",
+            "url": "https://res.cloudinary.com/dyntsz5qv/image/upload/v1733625022/123e4567-e89b-12d3-a456-426614174014/zrdberh4gpxkzkqngdaf.png",
+            "publicId": "123e4567-e89b-12d3-a456-426614174014/zrdberh4gpxkzkqngdaf"
+        }', 1, 4, '123e4567-e89b-12d3-a456-426614174014', NOW(), NOW());
+
+
+
+INSERT INTO pets (name, description, birthdate, weight, height, gender, color, behavior, profile_picture, category_id, breed_id, shelter_id, created_at, updated_at) VALUES ('Bailey', 'Bailey puede ser un poco tímida en situaciones nuevas y cuando conoce gente nueva, y necesitará que los nuevos dueños sean pacientes y la apoyen.||Bailey ha mostrado una falta de confianza aquí en el centro cuando se encuentra con perros desconocidos, pero está haciendo un gran progreso en la construcción de amistades con algunos de los perros aquí, y está mostrando un lado un poco juguetón con sus amigos más familiares, debido a la falta de confianza de Bailey y la necesidad de apoyo con su nuevo entorno y caminó en rutas de paseo para perros más tranquilas y necesitaría ser la única mascota en el hogar.||Después de un paseo, nada le gusta más que relajarse en su cama, o a tu lado en el sofá y recibir todos los mimos que se merece.||Bailey busca idealmente un hogar donde haya alguien cerca durante gran parte del día y un hogar con niños adolescentes mayores que puedan permitirle espacio y paciencia cuando sea necesario.||Si tiene un espacio con forma de Labrador en su vida, complete una solicitud hoy', '2019-03-19', 30, 65, 'female', 'amarillo', '{"Juguetona", "Inteligente"}', '{
+            "fileName": "Bailey-profile.PNG",
+            "url": "https://res.cloudinary.com/dyntsz5qv/image/upload/v1733625947/123e4567-e89b-12d3-a456-426614174014/eaosxqyf85chgrwocz7v.png",
+            "publicId": "123e4567-e89b-12d3-a456-426614174014/eaosxqyf85chgrwocz7v"
+        }', 1, 1, '123e4567-e89b-12d3-a456-426614174014', NOW(), NOW());
+
+--
+
+INSERT INTO pets (name, description, birthdate, weight, height, gender, color, behavior, profile_picture, category_id, breed_id, shelter_id, created_at, updated_at) VALUES ('Jared', 'Estos cachorros son muy inteligentes y necesitarán orientación sobre cómo dirigir su energía. Son un poco inseguros, por lo que necesitarán tiempo para adaptarse a sus nuevos hogares y todo se hará a su propio ritmo.||Necesitarán una nueva familia con tiempo para poder ofrecerles un estilo de vida activo y divertido, ya sea con entrenamiento, enriquecimiento, paseos más largos y enriquecedores y tiempo de juego.||Recomendamos a cualquiera que consulte sus perfiles que investigue ambas razas.||Necesitarán a alguien cerca la mayor parte del día, ya que aún no se sienten cómodos estando solos o no están acostumbrados a hacer sus necesidades en casa.', '2024-10-10', 8, 26, 'male', 'tricolor', '{"Sociable", "Juguetón"}', '{
+            "fileName": "Jared-profile.PNG",
+            "url": "https://res.cloudinary.com/dyntsz5qv/image/upload/v1733626656/123e4567-e89b-12d3-a456-426614174003/hi7zpyv8riq3c7vzj0eq.png",
+            "publicId": "123e4567-e89b-12d3-a456-426614174003/hi7zpyv8riq3c7vzj0eq"
+        }', 1, 41, '123e4567-e89b-12d3-a456-426614174003', NOW(), NOW());
+
+
+
+
+
+INSERT INTO public.pet_photos(
+	id, pet_id, url, created_at, updated_at)
+	VALUES (1, 1, '{
+            "fileName": "Ebony-photo-1.PNG",
+            "url": "https://res.cloudinary.com/dyntsz5qv/image/upload/v1733614663/123e4567-e89b-12d3-a456-426614174014/ydj9mq8fuyknq5b6znfv.png",
+            "publicId": "123e4567-e89b-12d3-a456-426614174014/ydj9mq8fuyknq5b6znfv"
+        }', NOW(), NOW());
+
+INSERT INTO public.pet_photos(
+	id, pet_id, url, created_at, updated_at)
+	VALUES (2, 1, '{
+            "fileName": "Ebony-profile.PNG",
+            "url": "https://res.cloudinary.com/dyntsz5qv/image/upload/v1733614664/123e4567-e89b-12d3-a456-426614174014/dirnqm1yn2rml11cypde.png",
+            "publicId": "123e4567-e89b-12d3-a456-426614174014/dirnqm1yn2rml11cypde"
+        }', NOW(), NOW());
+
+
+INSERT INTO public.pet_photos(
+	id, pet_id, url, created_at, updated_at)
+	VALUES (3, 2, '{
+            "fileName": "Creed-profile.PNG",
+            "url": "https://res.cloudinary.com/dyntsz5qv/image/upload/v1733620530/123e4567-e89b-12d3-a456-426614174014/l5b9hypxopba7gs2vbmq.png",
+            "publicId": "123e4567-e89b-12d3-a456-426614174014/l5b9hypxopba7gs2vbmq"
+        }', NOW(), NOW());
+
+INSERT INTO public.pet_photos(
+	id, pet_id, url, created_at, updated_at)
+	VALUES (4, 2, '{
+            "fileName": "Creed-photo-1.PNG",
+            "url": "https://res.cloudinary.com/dyntsz5qv/image/upload/v1733620529/123e4567-e89b-12d3-a456-426614174014/rgbegmrgbujlkexgo1m0.png",
+            "publicId": "123e4567-e89b-12d3-a456-426614174014/rgbegmrgbujlkexgo1m0"
+        }', NOW(), NOW());
+
+
+INSERT INTO public.pet_photos(
+	id, pet_id, url, created_at, updated_at)
+	VALUES (5, 3, '{
+            "fileName": "Willow-profile.PNG",
+            "url": "https://res.cloudinary.com/dyntsz5qv/image/upload/v1733621417/123e4567-e89b-12d3-a456-426614174014/zzmsm9o5e1wejxknwolk.png",
+            "publicId": "123e4567-e89b-12d3-a456-426614174014/zzmsm9o5e1wejxknwolk"
+        }', NOW(), NOW());
+
+INSERT INTO public.pet_photos(
+	id, pet_id, url, created_at, updated_at)
+	VALUES (6, 3, '{
+            "fileName": "Willow-photo-1.PNG",
+            "url": "https://res.cloudinary.com/dyntsz5qv/image/upload/v1733621417/123e4567-e89b-12d3-a456-426614174014/yrncvqnlreh74dxq1tpp.png",
+            "publicId": "123e4567-e89b-12d3-a456-426614174014/yrncvqnlreh74dxq1tpp"
+        }', NOW(), NOW());
+
+
+INSERT INTO public.pet_photos(
+	id, pet_id, url, created_at, updated_at)
+	VALUES (7, 4, '{
+            "fileName": "Toby-profile.PNG",
+            "url": "https://res.cloudinary.com/dyntsz5qv/image/upload/v1733625022/123e4567-e89b-12d3-a456-426614174014/zrdberh4gpxkzkqngdaf.png",
+            "publicId": "123e4567-e89b-12d3-a456-426614174014/zrdberh4gpxkzkqngdaf"
+        }', NOW(), NOW());
+
+INSERT INTO public.pet_photos(
+	id, pet_id, url, created_at, updated_at)
+	VALUES (8, 4, '{
+            "fileName": "Toby-photo-1.PNG",
+            "url": "https://res.cloudinary.com/dyntsz5qv/image/upload/v1733625021/123e4567-e89b-12d3-a456-426614174014/htvmwpsewetwa2y23t0n.png",
+            "publicId": "123e4567-e89b-12d3-a456-426614174014/htvmwpsewetwa2y23t0n"
+        }', NOW(), NOW());
+
+INSERT INTO public.pet_photos(
+	id, pet_id, url, created_at, updated_at)
+	VALUES (9, 5, '{
+            "fileName": "Bailey-profile.PNG",
+            "url": "https://res.cloudinary.com/dyntsz5qv/image/upload/v1733625947/123e4567-e89b-12d3-a456-426614174014/eaosxqyf85chgrwocz7v.png",
+            "publicId": "123e4567-e89b-12d3-a456-426614174014/eaosxqyf85chgrwocz7v"
+        }', NOW(), NOW());
+
+INSERT INTO public.pet_photos(
+	id, pet_id, url, created_at, updated_at)
+	VALUES (10, 5, '{
+            "fileName": "Bailey-photo-1.PNG",
+            "url": "https://res.cloudinary.com/dyntsz5qv/image/upload/v1733625946/123e4567-e89b-12d3-a456-426614174014/direyrrvoj3rs9lfegcq.png",
+            "publicId": "123e4567-e89b-12d3-a456-426614174014/direyrrvoj3rs9lfegcq"
+        }', NOW(), NOW());
+
+INSERT INTO public.pet_photos(
+	id, pet_id, url, created_at, updated_at)
+	VALUES (11, 6, '{
+            "fileName": "Jared-profile.PNG",
+            "url": "https://res.cloudinary.com/dyntsz5qv/image/upload/v1733626656/123e4567-e89b-12d3-a456-426614174003/hi7zpyv8riq3c7vzj0eq.png",
+            "publicId": "123e4567-e89b-12d3-a456-426614174003/hi7zpyv8riq3c7vzj0eq"
+        }', NOW(), NOW());
+
+INSERT INTO public.pet_photos(
+	id, pet_id, url, created_at, updated_at)
+	VALUES (12, 6, '{
+            "fileName": "Jared-photo-1.PNG",
+            "url": "https://res.cloudinary.com/dyntsz5qv/image/upload/v1733626657/123e4567-e89b-12d3-a456-426614174003/lrpnq5zwahal34tirbch.png",
+            "publicId": "123e4567-e89b-12d3-a456-426614174003/lrpnq5zwahal34tirbch"
+        }', NOW(), NOW());
