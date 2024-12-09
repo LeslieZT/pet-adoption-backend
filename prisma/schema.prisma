@@ -1,9 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -17,10 +11,10 @@ model Department {
   departmentId Int        @id @default(autoincrement()) @map("department_id")
   name         String
   code         String
-  provinces    Province[]
-  districts    District[]
   createdAt    DateTime?  @default(now()) @map("created_at")
   updatedAt    DateTime?  @updatedAt @map("updated_at")
+  districts    District[]
+  provinces    Province[]
 
   @@map("departments")
 }
@@ -30,10 +24,10 @@ model Province {
   name         String
   code         String
   departmentId Int        @map("department_id")
-  department   Department @relation(fields: [departmentId], references: [departmentId])
-  districts    District[]
   createdAt    DateTime   @default(now()) @map("created_at")
   updatedAt    DateTime?  @updatedAt @map("updated_at")
+  districts    District[]
+  department   Department @relation(fields: [departmentId], references: [departmentId])
 
   @@map("provinces")
 }
@@ -43,13 +37,13 @@ model District {
   name         String
   code         String
   provinceId   Int        @map("province_id")
-  province     Province   @relation(fields: [provinceId], references: [provinceId])
   departmentId Int        @map("department_id")
-  department   Department @relation(fields: [departmentId], references: [departmentId])
-  users        User[]
-  shelters     Shelter[]
   createdAt    DateTime   @default(now()) @map("created_at")
   updatedAt    DateTime?  @updatedAt @map("updated_at")
+  department   Department @relation(fields: [departmentId], references: [departmentId])
+  province     Province   @relation(fields: [provinceId], references: [provinceId])
+  shelters     Shelter[]
+  users        User[]
 
   @@map("districts")
 }
@@ -66,14 +60,14 @@ model User {
   birthdate    DateTime?     @db.Date
   address      String?
   districtId   Int?          @map("district_id")
-  district     District?     @relation(fields: [districtId], references: [districtId])
-  donations    Donation[]
-  shelters     Shelter[]
-  adoptions    Adoption[]
-  favoritePets FavoritePet[]
   customerId   String?       @map("customer_id")
   createdAt    DateTime      @default(now()) @map("created_at")
   updatedAt    DateTime?     @updatedAt @map("updated_at")
+  adoptions    Adoption[]
+  donations    Donation[]
+  favoritePets FavoritePet[]
+  shelters     Shelter[]
+  district     District?     @relation(fields: [districtId], references: [districtId])
 
   @@map("users")
 }
@@ -88,9 +82,9 @@ model Plan {
   description      String
   price            Decimal    @db.Decimal(6, 2)
   isPolular        Boolean    @map("is_polular")
-  donations        Donation[]
   createdAt        DateTime   @default(now()) @map("created_at")
   updatedAt        DateTime?  @updatedAt @map("updated_at")
+  donations        Donation[]
 
   @@map("plans")
 }
@@ -98,16 +92,16 @@ model Plan {
 model Donation {
   donationId String    @id @default(dbgenerated("gen_random_uuid()")) @map("donation_id") @db.Uuid
   planId     Int?      @map("plan_id")
-  plan       Plan?     @relation(fields: [planId], references: [planId])
   userId     String?   @map("user_id") @db.Uuid
-  user       User?     @relation(fields: [userId], references: [userId])
   email      String?
   name       String?
   amount     Decimal   @db.Decimal(6, 2)
   type       String
   status     String
   createdAt  DateTime  @default(now()) @map("created_at")
-  updatedAt  DateTime? @updatedAt @map("updated_at")  
+  updatedAt  DateTime? @updatedAt @map("updated_at")
+  plan       Plan?     @relation(fields: [planId], references: [planId])
+  user       User?     @relation(fields: [userId], references: [userId])
 
   @@map("donations")
 }
@@ -121,13 +115,12 @@ model Shelter {
   latitude   Decimal
   longitude  Decimal
   districtId Int       @map("district_id")
-  district   District  @relation(fields: [districtId], references: [districtId])
   userId     String?   @map("user_id") @db.Uuid
-  user       User?     @relation(fields: [userId], references: [userId])
-  pets       Pet[]
   createdAt  DateTime  @default(now()) @map("created_at")
   updatedAt  DateTime? @updatedAt @map("updated_at")
-
+  pets       Pet[]
+  district   District  @relation(fields: [districtId], references: [districtId])
+  user       User?     @relation(fields: [userId], references: [userId])
 
   @@map("shelters")
 }
@@ -135,10 +128,10 @@ model Shelter {
 model PetCategory {
   petCategoryId Int        @id @default(autoincrement()) @map("pet_category_id")
   name          String
-  pets          Pet[]
-  breeds        PetBreed[]
   createdAt     DateTime   @default(now()) @map("created_at")
   updatedAt     DateTime?  @updatedAt @map("updated_at")
+  breeds        PetBreed[]
+  pets          Pet[]
 
   @@map("pet_categories")
 }
@@ -147,10 +140,10 @@ model PetBreed {
   petBreedId Int         @id @default(autoincrement()) @map("pet_breed_id")
   name       String
   categoryId Int         @map("category_id")
-  category   PetCategory @relation(fields: [categoryId], references: [petCategoryId])
-  pets       Pet[]
   createdAt  DateTime    @default(now()) @map("created_at")
   updatedAt  DateTime?   @updatedAt @map("updated_at")
+  category   PetCategory @relation(fields: [categoryId], references: [petCategoryId])
+  pets       Pet[]
 
   @@map("pet_breeds")
 }
@@ -167,17 +160,17 @@ model Pet {
   behavior       String[]
   profilePicture Json?         @map("profile_picture")
   categoryId     Int           @map("category_id")
-  category       PetCategory   @relation(fields: [categoryId], references: [petCategoryId])
   breedId        Int           @map("breed_id")
-  breed          PetBreed      @relation(fields: [breedId], references: [petBreedId])
   shelterId      String        @map("shelter_id") @db.Uuid
-  shelter        Shelter       @relation(fields: [shelterId], references: [shelterId])
-  photos         PetPhoto[]
-  adoptions      Adoption[]
-  favoritePets   FavoritePet[]
-  status         String        @default("Available")  // 'Available' | 'Adopted'; 
+  status         String        @default("Available")
   createdAt      DateTime      @default(now()) @map("created_at")
   updatedAt      DateTime?     @updatedAt @map("updated_at")
+  adoptions      Adoption[]
+  favoritePets   FavoritePet[]
+  photos         PetPhoto[]
+  breed          PetBreed      @relation(fields: [breedId], references: [petBreedId])
+  category       PetCategory   @relation(fields: [categoryId], references: [petCategoryId])
+  shelter        Shelter       @relation(fields: [shelterId], references: [shelterId])
 
   @@map("pets")
 }
@@ -185,24 +178,24 @@ model Pet {
 model PetPhoto {
   id        Int       @id @default(autoincrement())
   petId     Int       @map("pet_id")
-  pet       Pet       @relation(fields: [petId], references: [petId])
   url       Json?
   createdAt DateTime  @default(now()) @map("created_at")
   updatedAt DateTime? @updatedAt @map("updated_at")
+  pet       Pet       @relation(fields: [petId], references: [petId])
 
   @@map("pet_photos")
 }
 
 model Adoption {
   adoptionId  String    @id @default(dbgenerated("gen_random_uuid()")) @map("adoption_id") @db.Uuid
-  application Json    // "pendeing" | "success" | "failed"
+  application Json
   status      String
   petId       Int       @map("pet_id")
-  pet         Pet       @relation(fields: [petId], references: [petId])
   userId      String    @map("user_id") @db.Uuid
-  user        User      @relation(fields: [userId], references: [userId])
   createdAt   DateTime  @default(now()) @map("created_at")
   updatedAt   DateTime? @updatedAt @map("updated_at")
+  pet         Pet       @relation(fields: [petId], references: [petId])
+  user        User      @relation(fields: [userId], references: [userId])
 
   @@map("adoptions")
 }
@@ -210,12 +203,12 @@ model Adoption {
 model FavoritePet {
   favoritePetId Int       @id @default(autoincrement()) @map("favorite_pet_id")
   petId         Int       @map("pet_id")
-  pet           Pet       @relation(fields: [petId], references: [petId])
   userId        String    @map("user_id") @db.Uuid
-  user          User      @relation(fields: [userId], references: [userId])
   value         Boolean
   createdAt     DateTime  @default(now()) @map("created_at")
   updatedAt     DateTime? @updatedAt @map("updated_at")
+  pet           Pet       @relation(fields: [petId], references: [petId])
+  user          User      @relation(fields: [userId], references: [userId])
 
   @@map("favorite_pets")
 }

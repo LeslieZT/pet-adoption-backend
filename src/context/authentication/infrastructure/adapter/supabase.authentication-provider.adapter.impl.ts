@@ -21,6 +21,7 @@ export class SupabaseAuthenticationProviderImpl implements AuthenticationProvide
 	}
 
 	async signUp(params: SignUpParams): Promise<GetUserResponse> {
+		console.log({emailRedirectTo: `${FRONTEND_URL}/auth/verify-email`})
 		const { data, error } = await this.client.auth.signUp({
 			email: params.email,
 			password: params.password,
