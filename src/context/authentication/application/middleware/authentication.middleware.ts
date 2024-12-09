@@ -17,12 +17,14 @@ export class AuthenticationMiddleware {
 	async verifyChannel(req: Request, res: Response, next: NextFunction) {
 		const channelHeader = req.get("X-Channel") as ChannelType;
 		if (!channelHeader) {
-			const error = new UnauthorizationError("Not Authorized Channel");
+			logger.error("Channel not send");
+			const error = new UnauthorizationError("Not Authorized");
 			return next(error);
 		}
 
 		if (![ChannelType.ADOPTION, ChannelType.SHELTER].includes(channelHeader)) {
-			const error = new UnauthorizationError("Not Authorized - Channel");
+			logger.error("Channel not valid");
+			const error = new UnauthorizationError("Not Authorized");
 			return next(error);
 		}
 		next();
@@ -42,12 +44,14 @@ export class AuthenticationMiddleware {
 			}
 			const channelHeader = req.get("X-Channel") as ChannelType;
 			if (!channelHeader) {
-				const error = new UnauthorizationError("Not Authorized Channel");
+				logger.error("Channel not send");
+				const error = new UnauthorizationError("Not Authorized");
 				return next(error);
 			}
 
 			if (![ChannelType.ADOPTION, ChannelType.SHELTER].includes(channelHeader)) {
-				const error = new UnauthorizationError("Not Authorized - Channel");
+				logger.error("Channel not valid");
+				const error = new UnauthorizationError("Not Authorized");
 				return next(error);
 			}
 
