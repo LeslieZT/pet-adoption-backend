@@ -7,7 +7,7 @@ import mainRouter from "./routes";
 
 const app = express();
 
-const whiteList = ["http://localhost:5173", "http://localhost:3000", "https://happypaws-app.vercel.app/"];
+const whiteList = ["http://localhost:5173", "http://localhost:3000", "https://happypaws-app.vercel.app", "https://happypaws-api.up.railway.app"];
 
 app.use(
 	cors({
