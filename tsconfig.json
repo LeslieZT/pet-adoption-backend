@@ -10,7 +10,7 @@
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "esModuleInterop": true,
-    "outDir": "build"                       
+    "outDir": "./dist"                       
   },
   "include": [
     "src/**/*.ts",
