@@ -13,17 +13,11 @@
 ![Supabase](https://img.shields.io/badge/Supabase-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white)
 
 <p align="center">
-    <a href="https://exploryq.vercel.app" align="center">
-        <img src="https://img.icons8.com/color/32/000000/link.png" alt="Website Link" />
-    </a>
-    <a href="https://www.figma.com/design/fXW7IPhMuYhg3kaVGTTiwD/App-To-Find-Events?node-id=0-1&m=dev&t=SPPGu7PemDSKcoaJ-1">
-        <img src="https://img.icons8.com/color/32/000000/figma.png" alt="Figma Link" />
-    </a>
-    <a href="https://alexamibco.atlassian.net/jira/software/projects/EVENT/boards/67/timeline?shared=&atlOrigin=eyJpIjoiYzM0NDc1YWU0Y2Q1NGJkMzkzZWJhYjM4NDdjNWFlNzUiLCJwIjoiaiJ9">
-        <img src="https://img.icons8.com/color/32/000000/jira.png" alt="Jira Link" />
-    </a>
-    <a href="https://github.com/SebastianUrdaneguiBisalaya/App-To-Find-Events">
-        <img src="https://img.icons8.com/color/32/000000/react-native.png" alt="Frontend Respository Link" />
+    <a href="https://happypaws-app.vercel.app">
+        <img src="https://cdn-icons-png.freepik.com/256/3715/3715371.png?semt=ais_hybrid" alt="Website Link" height="70"  weight="70"/>
+    </a>    
+    <a href="https://github.com/LeslieZT/pet-adoption-backend">
+        <img src="https://cdn-icons-png.flaticon.com/512/8099/8099220.png" alt="Backend Link" height="70"  weight="70" />
     </a>
 </p>
 
