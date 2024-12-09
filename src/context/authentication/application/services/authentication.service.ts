@@ -109,9 +109,6 @@ export default class AuthenticationService {
 					userId: data.id,
 					firstName: data.user_metadata.full_name,
 					lastName: "",
-					avatar: {
-						url: data.user_metadata.avatar_url,
-					},					
 					email: data.email,
 					password: "",
 					channel: channel,
